@@ -1,38 +1,50 @@
+Client-Side HTTP Proxy and File Downloader
+This project is a client-side HTTP proxy and file downloader written in C. It fetches files from a given URL, saves them to the local filesystem to simulate a proxy server, and can also open them in a web browser if specified. The program checks if the file already exists locally before making an HTTP request to download it.
 
-# HTTCP Proxy Server
-
-This project is a simple HTTP proxy and file downloader written in C. It fetches files from a given URL, saves them to the local filesystem, and can also open them in a web browser if specified. The program checks if the file already exists locally before making an HTTP request to download it.
-
-## Features
-- Parse URLs to extract protocol, host, port, and path.
-- Check if a file exists in the local filesystem.
-- Construct HTTP GET requests.
-- Create directories as needed to save files.
-- Open files in a web browser using a flag.
-- Save the HTTP response to a file and print it to the screen.
+Features
+Parse URLs to extract protocol, host, port, and path.
+Check if a file exists in the local filesystem.
+Construct HTTP GET requests.
+Create directories as needed to save files.
+Open files in a web browser using a flag.
+Save the HTTP response to a file and print it to the screen.
+Requirements
+GCC compiler
+Standard C libraries
+POSIX libraries for networking and file handling
+Installation
+Clone the repository:
 
 Compile the program using GCC:
 gcc -o cproxy cproxy.c
 
 Run the program:
 ./cproxy <URL> [-s]
-- `<URL>`: The URL of the file to download (e.g., `http://example.com/index.html`).
-- `-s`: (Optional) Opens the downloaded file in the Firefox web browser.
+<URL>: The URL of the file to download (e.g., http://example.com/index.html).
+-s: (Optional) Opens the downloaded file in the Firefox web browser.
 
-Example:
+Example
 ./cproxy http://example.com/index.html -s
-This command fetches the `index.html` file from `example.com` and opens it in Firefox if the `-s` flag is provided.
+This command fetches the index.html file from example.com and opens it in Firefox if the -s flag is provided.
 
-### Structs and Macros
-- `ParsedURL`: Structure to store parsed components of the URL (protocol, host, port, path).
-- `MIN(a, b)`: Macro to determine the minimum of two values.
+Structs and Macros
+ParsedURL: Structure to store parsed components of the URL (protocol, host, port, path).
+MIN(a, b): Macro to determine the minimum of two values.
 
-### Functions
-1. **parseURL**: Parses the given URL into protocol, host, port, and path.
-2. **fileExists**: Checks if the file exists in the local filesystem.
-3. **constructHTTPRequest**: Constructs the HTTP GET request.
-4. **createDirectories**: Creates directories as needed to save the file.
-5. **openFile**: Opens a file for writing.
-6. **receiveAndSaveResponse**: Receives the HTTP response and saves it to a file.
-7. **createHTTPResponse**: Creates an HTTP response string with the specified content length.
-8. **getFileSize**: Returns the size of a file.
+Functions
+parseURL: Parses the given URL into protocol, host, port, and path.
+fileExists: Checks if the file exists in the local filesystem.
+constructHTTPRequest: Constructs the HTTP GET request.
+createDirectories: Creates directories as needed to save the file.
+openFile: Opens a file for writing.
+receiveAndSaveResponse: Receives the HTTP response and saves it to a file.
+createHTTPResponse: Creates an HTTP response string with the specified content length.
+getFileSize: Returns the size of a file.
+
+Main Function
+Parses command-line arguments.
+Parses the URL.
+Checks if the file exists locally.
+If it exists, prints the file from the local filesystem.
+If not, connects to the server, sends an HTTP GET request, and saves the response.
+Opens the file in Firefox if the -s flag is provided.
