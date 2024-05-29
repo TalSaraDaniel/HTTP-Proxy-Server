@@ -8,12 +8,6 @@ Construct HTTP GET requests.
 Create directories as needed to save files.
 Open files in a web browser using a flag.
 Save the HTTP response to a file and print it to the screen.
-Requirements
-GCC compiler
-Standard C libraries
-POSIX libraries for networking and file handling
-Installation
-Clone the repository:
 
 Compile the program using GCC:
 gcc -o cproxy cproxy.c
