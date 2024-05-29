@@ -1,0 +1,5 @@
+211318308
+Tal Sara Daniel
+Ex1
+cproxy.c
+This program is a simple HTTP proxy simulates communication via a socket with the server including sending an HTTP request and receiving an HTTP response when the user requests a certain URL.
